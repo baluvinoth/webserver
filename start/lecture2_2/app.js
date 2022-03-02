@@ -7,7 +7,8 @@ class App{
 		document.body.appendChild( container );
 
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth/window.innerHeight, 0.1, 100);
-		this.camera.position.set(0,0,4);
+		/*this.camera.position.set(0,0,4);*/
+		this.camera.getWorldPosition.
 
 		this.scene = new THREE.Scene();
 		this.scene.background = new THREE.Color( 0xaaaaaa );
@@ -18,6 +19,12 @@ class App{
 		container.appendChild(this.renderer.domElement);
 
 		this.renderer.setAnimationLoop(this.render.bind(this));
+
+		const geomentry = new THREE.BoxBufferGeometry();
+		const material = new THREE.MeshStandardMaterial({Color: 0xff0000 });
+
+		this.mesh = new THREE.Mesh(geomentry,material);
+		this.scene.add(this.mesh);
         
         window.addEventListener('resize', this.resize.bind(this) );
 	}	
