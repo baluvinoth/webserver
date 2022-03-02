@@ -13,16 +13,25 @@ class App{
 		this.scene = new THREE.Scene();
 		this.scene.background = new THREE.Color( 0xaaaaaa );
 
+		const ambient = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 0.3);
+		this.scene.add(ambient);
+
+		const light = new THREE.DirectionalLight();
+		light.position.set(0.2, 1, 1);
+		this.scene.add(light);
+
 		this.renderer = new THREE.WebGLRenderer({ antialias: true});
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
 		container.appendChild(this.renderer.domElement);
 		
 		const geomentry = new THREE.BoxBufferGeometry();
-		const material = new THREE.MeshStandardMaterial({Color: 0xFF0000 });
+		const material = new THREE.MeshStandardMaterial({ Color: 0xFF0000 });
 
 		this.mesh = new THREE.Mesh( geomentry, material);
 		this.scene.add(this.mesh);
+
+		const controls = new OrbitControls(this.camera, this.renderer.domElement);
         
 		this.renderer.setAnimationLoop(this.render.bind(this));
 
@@ -30,11 +39,14 @@ class App{
 	}	
     
     resize(){
+		this.camera.aspect = window.innerWidth/window.innerHeight;
+		this.camera.updateMatrixWorld();
+		this.renderer.setSize(window.innerWidth, window.innerHeight);
         
     }
     
 	render( ) {  
-		this.mesh.rotateY(0.01);
+		this.mesh.rotateY( 0.01 );
         this.renderer.render(this.scene, this.camera);
     }
 }
