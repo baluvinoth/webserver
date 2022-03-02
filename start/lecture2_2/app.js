@@ -17,15 +17,15 @@ class App{
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
 		container.appendChild(this.renderer.domElement);
-
-		this.renderer.setAnimationLoop(this.render.bind(this));
-
+		
 		const geomentry = new THREE.BoxBufferGeometry();
 		const material = new THREE.MeshStandardMaterial({Color: 0xFF0000 });
 
 		this.mesh = new THREE.Mesh( geomentry, material);
 		this.scene.add(this.mesh);
         
+		this.renderer.setAnimationLoop(this.render.bind(this));
+
         window.addEventListener('resize', this.resize.bind(this) );
 	}	
     
