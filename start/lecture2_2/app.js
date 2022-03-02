@@ -21,9 +21,9 @@ class App{
 		this.renderer.setAnimationLoop(this.render.bind(this));
 
 		const geomentry = new THREE.BoxBufferGeometry();
-		const material = new THREE.MeshStandardMaterial({Color: 0xff0000 });
+		const material = new THREE.MeshStandardMaterial({Color: 0xFF0000 });
 
-		this.mesh = new THREE.Mesh(geomentry,material);
+		this.mesh = new THREE.Mesh( geomentry, material);
 		this.scene.add(this.mesh);
         
         window.addEventListener('resize', this.resize.bind(this) );
