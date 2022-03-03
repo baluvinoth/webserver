@@ -26,7 +26,7 @@ class App{
 		container.appendChild(this.renderer.domElement);
 		
 		const geomentry = new THREE.BoxBufferGeometry();
-		const material = new THREE.MeshStandardMaterial({ Color: 0x00FF00 });
+		const material = new THREE.MeshStandardMaterial({ color: 'red' });
 
 		this.mesh = new THREE.Mesh( geomentry, material);
 		this.scene.add(this.mesh);
