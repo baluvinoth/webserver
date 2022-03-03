@@ -68,7 +68,7 @@ class App{
         const loader = new GLTFLoader().setPath('../../assets/');
 
         loader.load(
-            'office-chair.glb',
+            'Mercedes_Benz_GLS_580',
             function(gltf){
                 const bbox = new THREE.Box3().setFromObject(gltf.scene);
                 console.log('min:${vector3ToString(bbox.min, 2} -max:${vector3ToString(bbox.max, 2)}');
