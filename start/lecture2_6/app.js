@@ -67,8 +67,10 @@ class App{
         const loader = new GLTFLoader().setPath('../../assets/');
 
         loader.load(
-            'office-dhair.glb',
+            'office-chair.glb',
             function(gltf){
+                const bbox = new THREE.Box3().setFromObject(gltf.scene);
+                console.log()
                 self.chair = gltf.scene;
                 self.scene.add( gltf.scene);
                 self.LoadingBar.visible = false;
